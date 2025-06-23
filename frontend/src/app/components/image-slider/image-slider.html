@@ -1,0 +1,14 @@
+@if (images) {
+<ngb-carousel>
+    <ng-template ngbSlide>
+        <div class="d-flex justify-content-center align-items-center overflow-hidden" style="height: 500px;">
+            <img [src]="images[0]" alt="..." class="w-100 h-100 object-fit-cover" style="object-position: center;" />
+        </div>
+    </ng-template>
+    <ng-template ngbSlide>
+        <div class="d-flex justify-content-center align-items-center overflow-hidden" style="height: 500px;">
+            <img [src]="images[1]" alt="..." class="w-100 h-100 object-fit-cover" style="object-position: center;" />
+        </div>
+    </ng-template>
+</ngb-carousel>
+}

@@ -1,0 +1,30 @@
+.navLogo{
+    width: 4rem;
+    height: 4rem;
+    margin-right: 0.8rem;
+}
+
+li{
+    text-decoration: none;
+}
+
+.navItemHover{
+  padding-bottom: 0;
+  padding-top: 0;
+  border-bottom: 2px solid #2C6E49;
+}
+
+.navItemHover:hover{
+}
+
+.roundedaNav{
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .roundedaNav {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
