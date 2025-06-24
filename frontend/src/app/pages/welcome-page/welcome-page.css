@@ -1,3 +1,19 @@
-.justifiedText{
-    text-align: justify;
+.fontSize{
+    font-size: 3rem;
+}
+
+.sectionBg{
+    z-index: -1;
+    width: 100%;
+    height: 110vh;
+    background-color: var(--green);
+    position: absolute;
+    top: 0;
+    clip-path: polygon(
+    0 0,          /* top left */
+    100% 0,       /* top right */
+    100% 95%,     /* right before bottom */
+    50% 100%,     /* bottom center - the point of the V */
+    0 95%         /* left before bottom */
+  );
 }

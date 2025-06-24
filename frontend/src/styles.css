@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --green: #4c956c;
+    --dark-green: #2C6E49
+}
+
 body {
-    background-color: #4C956C;
     font-family: "Huninn", sans-serif;
     font-weight: 400;
     font-style: normal;
