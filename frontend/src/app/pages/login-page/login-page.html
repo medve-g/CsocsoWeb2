@@ -1,1 +1,48 @@
-<p>login-page works!</p>
+<div class="loginPageBackground w-100 position-absolute top-0">
+    <div class="bg-white p-5 rounded-3 shadow w-50">
+        <div class="text-left fw-bold fs-2 mb-4">
+            Bejelentkezés
+        </div>
+        <div>
+            <form [formGroup]="formGroup" (submit)="submitLoginForm($event)">
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" formControlName="email">
+                    @if (email && email.invalid && (email.dirty || email.touched) ) {
+                    <ng-container>
+                        @if (email.errors?.['required']) {
+                        <ng-container>
+                            <small class="text-danger">Az email kitöltése kötelező.</small>
+                        </ng-container>
+                        }
+                        @if (email.errors?.['email']) {
+                        <ng-container>
+                            <small class="text-danger">Kérem adjon meg egy email címet.</small>
+                        </ng-container>
+                        }
+                    </ng-container>
+                    }
+
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Jelszó</label>
+                    <input type="password" class="form-control" id="password" formControlName="password">
+                    @if (password && password.invalid && (password.dirty || password.touched)) {
+                    <ng-container>
+                        @if (password.errors?.['required']) {
+                        <small class="text-danger">A jelszó kitöltése kötelező.</small>
+                        }
+                        @if (password.errors?.['minlength']) {
+                        <small class="text-danger">Min. 8 karakter.</small>
+                        }
+                    </ng-container>
+                    }
+                </div>
+                <div class="w-100 text-center">
+                    <input type="submit" class="btn btn-primary mt-4 w-100" value="Bejelentkezés">
+                    <small>Nincs még fiókod? <span class="text-primary cursorPointer" routerLink="/registration">Regisztráció</span></small>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
