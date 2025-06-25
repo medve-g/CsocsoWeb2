@@ -4,6 +4,7 @@ import { RouterOutlet } from '@angular/router';
 import { LoadingService } from './services/loading-service';
 import { Loader } from './components/loader/loader';
 
+
 @Component({
   selector: 'app-root',
   imports: [Navbar, RouterOutlet, Loader],

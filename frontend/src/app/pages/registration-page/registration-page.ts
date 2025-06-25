@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, EmailValidator } from '@angular/forms';
-import { User } from '../../models/User';
+import { RecaptchaModule } from "ng-recaptcha-2";
 import { UserService } from '../../services/user-service';
+import { User } from '../../models/User';
+import { escapeRegExp } from '@angular/compiler';
 
 export function passwordMatchValidator(control: AbstractControl): ValidationErrors | null {
   const password = control.get('password')?.value;
@@ -11,7 +13,7 @@ export function passwordMatchValidator(control: AbstractControl): ValidationErro
 
 @Component({
   selector: 'app-registration-page',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, RecaptchaModule],
   templateUrl: './registration-page.html',
   styleUrl: './registration-page.css'
 })
@@ -37,21 +39,33 @@ export class RegistrationPage {
       validators: [Validators.required]
     })
   }, { validators: passwordMatchValidator })
-
+  
+  isHuman: boolean = false
+  
   constructor(private userService: UserService) {
 
+  }
+
+
+  resolved(captchaResponse: string | null) {
+    if (captchaResponse) {
+      this.isHuman = true;
+    } else {
+      this.isHuman = false;
+    }
   }
 
   registerUser() {
     if (this.formGroup.valid) {
 
       let control = this.formGroup.controls
-      let user = {
+      let user: User = {
         name: control.name.value,
         username: control.username.value,
         email: control.email.value,
         phone_number: control.tel.value,
-        password: control.password.value
+        password: control.password.value,
+        password_confirmation: control.passwordAgain.value
       }
       this.userService.createUser(user).subscribe({
         next: res => {

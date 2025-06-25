@@ -36,8 +36,9 @@
                         <input type="password" class="form-control" id="passwordAgain" formControlName="passwordAgain">
                     </div>
                 </div>
-                <div class="w-100 text-center">
-                    <button type="submit" class="btn btn-primary mt-4 w-100">Regisztráció</button>
+                <div class="w-100">
+                    <re-captcha (resolved)="resolved($event)" siteKey="6Ldc4mwrAAAAAMP0Gx0zdokAQd1DpLiv3XmOkOqF"></re-captcha>
+                    <button [disabled]="!isHuman" type="submit" class="btn btn-primary mt-4 w-100">Regisztráció</button>
                 </div>
             </form>
         </div>
