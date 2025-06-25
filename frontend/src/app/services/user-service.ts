@@ -17,7 +17,7 @@ export class UserService {
 
   createUser(user: User) {
     this.loadingService.setLoading(true);
-    return this.http.post(`${apiLink}/registerUser`, user).pipe(
+    return this.http.post(`${apiLink}/register`, user).pipe(
       catchError(error => {
         console.error('User creation failed:', error);
         return throwError(() => error);
